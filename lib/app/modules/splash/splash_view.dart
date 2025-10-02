@@ -18,43 +18,45 @@ class SplashView extends GetView<SplashController> {
       theme.updateSystemUI();
       return Scaffold(
         backgroundColor: theme.background,
-        body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(height: 0.2.sh),
-              SvgPicture.asset('assets/car.svg',color: theme.blue,),
-              Center(
-                child: Text(
-                  "theory".tr,
-                  style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold, color: theme.textColor),
-                ),
-              ),
-              Center(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 0.12.sw),
+        body: SingleChildScrollView(
+          child: SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(height: 0.2.sh),
+                SvgPicture.asset('assets/car.svg',color: theme.blue,),
+                Center(
                   child: Text(
-                    "theory_description".tr,
-                    style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.normal, color: theme.textColor),
-                    textAlign: TextAlign.center,
+                    "theory".tr,
+                    style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold, color: theme.textColor),
                   ),
-
                 ),
-              ),
-
-
-              Spacer(),
-
-
-              DotCircularProgressIndicator(
-                size: 50.w,
-                dotColor: theme.blue,
-                numberOfDots: 8,
-                startAngle: -90.0,
-              ),
-              SizedBox(height: 20.h),
-            ],
+                Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 0.12.sw),
+                    child: Text(
+                      "theory_description".tr,
+                      style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.normal, color: theme.textColor),
+                      textAlign: TextAlign.center,
+                    ),
+          
+                  ),
+                ),
+          
+          
+                Spacer(),
+          
+          
+                DotCircularProgressIndicator(
+                  size: 50.w,
+                  dotColor: theme.blue,
+                  numberOfDots: 8,
+                  startAngle: -90.0,
+                ),
+                SizedBox(height: 20.h),
+              ],
+            ),
           ),
         ),
       );

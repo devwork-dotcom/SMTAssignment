@@ -97,28 +97,16 @@ class SignUpController extends GetxController {
     );
 
     try {
-      final result = await AuthService.signUp(
-        name: nameController.text.trim(),
-        email: emailController.text.trim(),
-        password: passwordController.text,
-      );
+
 
       Get.back();
+      clearForm();
+      successPopUp();
 
-      if (result['success'] == true) {
-        clearForm();
-        successPopUp();
-      }
     } catch (e) {
       Get.back();
       final errorMessage = e.toString();
-      if (errorMessage.contains('User already exists')) {
-        Get.snackbar('Error'.tr, 'User already exists with this email');
-      } else if (errorMessage.contains('Failed to create user')) {
-        Get.snackbar('Error'.tr, 'Failed to create user account');
-      } else {
-        Get.snackbar('Error'.tr, errorMessage.replaceFirst('Exception: ', ''));
-      }
+      Get.snackbar('Error'.tr, errorMessage.replaceFirst('Exception: ', ''));
     }
   }
 
@@ -143,7 +131,7 @@ class SignUpController extends GetxController {
       subtitle: "success_sub_register".tr,
       buttonText: "continue".tr,
       onButtonPressed: () {
-        Get.toNamed('/signin');
+        Get.toNamed('/location-permission');
       },
     );
   }
